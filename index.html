@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haxball Profesional Colombiano</title>
+
+<style>
+:root{
+  --bg:#000e10;
+  --bg-2:#00171c;
+  --panel:#062229;
+  --ink:#f2f9f9;
+  --muted:#9bb3b3;
+  --accent:#009739;       /* Verde bandera Colombia */
+  --accent-2:#FFD700;     /* Amarillo */
+  --accent-3:#0033A0;     /* Azul */
+  --accent-4:#CE1126;     /* Rojo */
+  --accent-5:#ffe95f;     /* Amarillo suave */
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --radius:16px;
+  --trans:.3s ease;
+}
+
+@keyframes fadeInUp {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse {0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes glow {
+  from{text-shadow:0 0 8px var(--accent),0 0 18px var(--accent-2)}
+  to{text-shadow:0 0 14px var(--accent-3),0 0 28px var(--accent-4)}
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Poppins',system-ui,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 800px at 10% -10%,#043d2b33,transparent 60%),
+    radial-gradient(1000px 600px at 120% 10%,#002e6b33,transparent 60%),
+    linear-gradient(180deg,var(--bg),#000a0b 70%);
+  animation:fadeInUp .6s ease;
+}
+
+/* === TOP BAR === */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(0,18,22,.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid #17343c;
+  animation:fadeInUp .6s ease;
+}
+.wrap{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;gap:14px;}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand img{width:42px;height:42px;border-radius:10px;box-shadow:var(--shadow);object-fit:contain}
+.brand h1{
+  font-size:1.1rem;margin:0;letter-spacing:.3px;color:var(--ink);
+  animation:glow 3s infinite alternate;text-transform:uppercase;
+}
+.spacer{flex:1}
+.nav{display:flex;gap:6px;padding:6px;background:#041b21;border:1px solid #0b3a40;border-radius:999px}
+.nav button{appearance:none;border:0;background:transparent;color:var(--muted);padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:600;letter-spacing:.2px;transition:var(--trans)}
+.nav button:hover{color:var(--ink);transform:translateY(-1px)}
+.nav button.active{
+  color:#021410;
+  background:linear-gradient(90deg,var(--accent-3),var(--accent-2),var(--accent));
+  box-shadow:0 6px 18px rgba(255,221,50,.4)
+}
+.discord{margin-left:10px;text-decoration:none;font-weight:700;padding:10px 14px;border-radius:12px;color:#0d1436;background:#8ea1f2;border:1px solid #a8b3ff;transition:.2s}
+.discord:hover{transform:translateY(-2px);filter:brightness(1.1)}
+
+/* === SECCIONES === */
+.section{display:none}
+.section.active{display:block;animation:fadeInUp .6s ease}
+.container{max-width:1100px;margin:30px auto;padding:0 18px}
+
+/* === HERO === */
+.hero{
+  background:linear-gradient(180deg,#001e22,#001416);
+  border:1px solid #10383f;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:28px;text-align:center;
+  animation:pulse 4s infinite
+}
+.hero h2{margin:6px 0 8px;font-size:1.8rem;color:#eafaf4}
+.hero p{margin:0;color:var(--muted)}
+.cta-row{margin-top:16px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{
+  border:1px solid #1c502e;
+  color:#fff8cc;
+  background:linear-gradient(90deg,#004d27,#00692d);
+  padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;transition:var(--trans)
+}
+.btn:hover{filter:brightness(1.1);transform:scale(1.05)}
+
+/* === BLOQUES === */
+.block{
+  max-width:1000px;margin:40px auto;background:var(--panel);
+  padding:20px;border-radius:12px;box-shadow:var(--shadow);
+  transition:var(--trans)
+}
+.block:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.block h3{
+  margin-top:0;margin-bottom:12px;font-size:1.6rem;
+  color:#001d14;
+  background:linear-gradient(90deg,var(--accent-4),var(--accent-3),var(--accent-2),var(--accent));
+  padding:10px 14px;border-radius:10px;text-align:center;
+  letter-spacing:.5px;text-transform:uppercase
+}
+.block p{line-height:1.6;font-size:1rem;color:#d9eeee}
+
+/* === TABLAS === */
+.tables-grid{display:flex;justify-content:center}
+.tables-grid>div{width:100%;max-width:750px}
+table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  overflow:hidden;border-radius:14px;
+  border:1px solid #13343c;
+  background:#00191b;
+  animation:fadeInUp .6s ease
+}
+thead th{
+  text-align:center;padding:12px 10px;font-size:.9rem;
+  letter-spacing:.4px;color:#00191c;
+  background:linear-gradient(90deg,var(--accent-3),var(--accent-2),var(--accent));
+  position:sticky;top:0;z-index:1
+}
+tbody td{padding:10px;border-top:1px solid #072f36;text-align:center;color:#d9eeee}
+tbody tr:nth-child(odd) td{background:#042124}
+tbody tr:hover td{background:#073239;transition:var(--trans)}
+td.left{text-align:left}
+.separator{text-align:center;margin:16px 0 -6px;color:#9fdcc8;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+
+/* === PARTIDOS === */
+.match-list{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:760px){.match-list{grid-template-columns:1fr 1fr}}
+.match{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;background:#002225;border:1px solid #103a41;
+  border-radius:12px;padding:12px 14px;transition:var(--trans)
+}
+.match:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.team{display:flex;align-items:center;gap:8px;min-width:0;font-weight:700;color:#eafff7}
+.vs{opacity:.8;font-weight:800;letter-spacing:.3px}
+.when{text-align:right;color:#a8d7c7;font-size:.9rem}
+.badge{font-size:.65rem;padding:4px 8px;border-radius:999px;border:1px solid #27524a;color:#baf3e1;background:#113c33}
+.score{font-weight:800;font-size:1.1rem;color:#FFD700;padding:2px 8px;border-radius:8px;background:#1a2d2f}
+
+/* === LOGOS MEJORADOS === */
+td .logo,
+.team img,
+.club-logo,
+#stats td img.logo,
+#stats td.player-cell img.logo {
+  width:34px;height:34px;object-fit:contain;border-radius:8px;
+  background:linear-gradient(135deg,#ffd70033,#0033a033,#00973933);
+  padding:3px;box-shadow:0 0 6px rgba(0,0,0,0.4);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+td .logo:hover,
+.team img:hover,
+.club-logo:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 12px var(--accent-2);
+}
+
+/* === ANIMACIÓN ENTRADA TV === */
+@keyframes logoFadeIn {
+  0%{opacity:0;transform:scale(0.8)}
+  100%{opacity:1;transform:scale(1)}
+}
+img.logo,.team img,.club-logo{animation:logoFadeIn .6s ease}
+
+/* === AFILIADOS / PATROCINADORES === */
+.aff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:680px){.aff-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:960px){.aff-grid{grid-template-columns:repeat(4,1fr)}}
+.aff{
+  background:#001f22;border:1px solid #103c45;
+  border-radius:14px;padding:14px;
+  display:flex;align-items:center;justify-content:center;
+  aspect-ratio:16/10;transition:var(--trans);
+  text-decoration:none
+}
+.aff:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 10px 20px #00000066}
+.aff img{max-width:80%;max-height:80%;object-fit:contain;filter:drop-shadow(0 0 6px rgba(0,0,0,.4));transition:transform .2s ease}
+.aff:hover img{transform:scale(1.05)}
+
+/* === TARJETAS Y ESTADÍSTICAS === */
+#stats .block h3{margin-bottom:14px;font-size:1.4rem}
+#stats table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  border:1px solid #13343c;border-radius:12px;
+  overflow:hidden;background:#00191b;
+}
+#stats thead th{
+  padding:10px;
+  background:linear-gradient(90deg,
+    var(--accent-4) 0%,
+    var(--accent-3) 25%,
+    var(--accent-2) 50%,
+    var(--accent) 75%,
+    var(--accent-5) 100%);
+  color:#00191c;font-weight:700;font-size:.9rem;
+  background-size:200% 100%;
+  animation:progressiveBar 8s linear infinite;
+}
+@keyframes progressiveBar {
+  0% {background-position:0 0;}
+  100% {background-position:-200% 0;}
+}
+#stats tbody td{padding:10px;border-top:1px solid #072f36;color:#d9eeee}
+#stats tbody td:first-child,#stats tbody td.player-cell{text-align:left}
+#stats tbody td:nth-child(n+3){text-align:right}
+#stats tbody tr:nth-child(odd) td{background:#042124}
+#stats tbody tr:hover td{background:#073239}
+#stats td.player-cell{display:flex;align-items:center;gap:8px;font-weight:500}
+#stats td.player-cell .jugador{color:#d9eeee;font-size:.95rem}
+
+/* === TARJETAS JUGADORES === */
+#tarjetasList{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.tarjeta{
+  flex:0 0 calc(33.333% - 12px);
+  display:flex;align-items:center;
+  background:#00191b;border-radius:12px;padding:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.5);max-width:300px;
+  transition:var(--trans)
+}
+.tarjeta:hover{transform:scale(1.05);box-shadow:0 6px 14px rgba(0,0,0,.5)}
+.tarjeta-img{width:50px;height:70px;object-fit:contain;margin-right:12px}
+.jugador-info{display:flex;flex-direction:column;gap:6px;color:#d9eeee}
+.club-info{display:flex;align-items:center}
+.fecha{font-size:.85rem;color:#a0cfc1}
+@media(max-width:768px){.tarjeta{flex:0 0 calc(50% - 12px)}}
+@media(max-width:480px){.tarjeta{flex:0 0 100%}}
+
+footer{margin:40px 0 60px;text-align:center;color:#86aaa7;font-size:.9rem}
+</style>
+
+</head>
+
+<body>
+
+
+  <!-- NAV / HEADER -->
+ <div class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <img src="https://i.pinimg.com/736x/fb/ac/94/fbac94252c104ee7370333c7fb077254.jpg" alt="Liga Promerica">
+        <h1>HPC</h1>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="nav" id="nav">
+        <button class="active" data-target="inicio">Inicio</button>
+        <button data-target="tablas">Tablas</button>
+        <button data-target="jornadas">Jornadas</button>
+        <button data-target="afiliados">Afiliados</button>
+        <button data-target="stats">Estadísticas</button>
+        <button data-target="tarjetas">Tarjetas</button>
+  
+
+
+      </div>
+
+      <a class="discord" href="https://discord.gg/FaYphcQfNB" target="_blank" rel="noopener">Discord</a>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: INFO -->
+<div class="block">
+  <h3>Cómo funciona</h3>
+  <p style="color:var(--muted); margin:0">
+    En esta sección encontrarás las <b>Tablas de Posiciones</b>, que se actualizan de forma automática según los resultados de cada jornada. Los equipos se ordenan por <b>puntos</b>, y en caso de empate se aplican criterios como la <b>diferencia de goles</b> y el <b>rendimiento en los duelos directos</b>.
+  </p>
+  <p style="color:var(--muted); margin-top:10px">
+    En el apartado de <b>Jornadas</b> queda guardado el registro histórico de cada fecha, para que siempre puedas consultar los marcadores anteriores y revivir partidos decisivos de la temporada.
+  </p>
+  <p style="color:var(--muted); margin-top:10px">
+    La sección de <b>Stats</b> muestra los líderes del torneo: goleadores, asistidores, porteros con más porterías a cero y mucho más. Es el lugar ideal para seguir de cerca a las figuras del campeonato.
+  </p>
+  <p style="color:var(--muted); margin-top:10px">
+    En <b>Tarjetas</b> encontrarás el historial disciplinario de los jugadores, con registros de amarillas y rojas en cada jornada, para llevar un control claro de sanciones y antecedentes.
+  </p>
+  <p style="color:var(--muted); margin-top:10px">
+    Finalmente, en la sección de <b>Afiliados</b> podrás conocer a nuestros socios y colaboradores oficiales, con enlaces a sus comunidades y proyectos que respaldan el crecimiento de esta liga.
+  </p>
+</div>
+
+
+  <section id="inicio" class="section active">
+    <div class="container">
+      <div class="hero">
+        <span class="badge">⚡ COL</span>
+
+        <h2>🏆 ¡Bienvenido a HPC!</h2>
+        <p> <strong>HPC</strong> abre sus puertas a una temporada cargada de adrenalina, pasión y competencia. Aquí podrás seguir en tiempo real la <strong>tabla de posiciones</strong>, descubrir los resultados de cada <strong>jornada</strong>, conocer a los <strong>clubes afiliados</strong> que forman parte de esta gran familia y revivir los <strong>mejores momentos</strong> que marcarán la historia del torneo.</p>
+        <p>Nuestra misión es crear un espacio donde cada partido cuente una historia, donde cada gol se grabe en la memoria de los fanáticos y donde la comunidad crezca unida por la pasión al fútbol.</p>
+        <p>¡Prepárate para vibrar con cada jugada y no perderte nada de esta temporada inolvidable!</p>
+      
+  </section>
+
+  <!-- SECCIÓN: TABLAS -->
+ <section id="tablas" class="section">
+  <div class="container">
+    <div class="tables-grid">
+      <div>
+        <div class="block">
+          <h3>Primera División</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Equipo</th>
+                <th>Tag</th>
+                <th>PJ</th>
+                <th>G</th>
+                <th>E</th>
+                <th>P</th>
+                <th>Pts</th>
+              </tr>
+            </thead>
+            <tbody id="tablaD1"></tbody>
+          </table>
+          </section>
+
+
+  <!-- SECCIÓN: JORNADAS -->
+  <section id="jornadas" class="section">
+    <div class="container">
+      <div class="block">
+        <h3>Jornadas — Primera División</h3>
+        <div class="match-list" id="jornadasD1"></div>
+      </div>
+  </section>
+
+
+
+  <!-- SECCIÓN: AFILIADOS -->
+  <section id="afiliados" class="section">
+    <div class="container">
+      <div class="block">
+        <h3>Afiliados</h3>
+        <div class="aff-grid" id="affGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: STATS -->
+  <section id="stats" class="section">
+    <div class="container">
+
+      <div class="block">
+        <h3>Top 5 Goleadores</h3>
+        <div class="tables-grid">
+          <div>
+            <table>
+              <thead>
+               
+  <tr><th>#</th><th>Jugador</th><th>Goles</th></tr>
+
+              </thead>
+              <tbody id="tablaGoleadores"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Top 5 Asistencias</h3>
+        <div class="tables-grid">
+          <div>
+            <table>
+              <thead>
+
+                <tr><th>#</th><th>Jugador</th><th>Asistencias</th></tr>
+              </thead>
+
+              <tbody id="tablaAsistencias"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Top 5 Porterías a Cero</h3>
+        <div class="tables-grid">
+          <div>
+            <table>
+              <thead>
+                
+  <tr><th>#</th><th>Jugador</th><th>CS</th></tr>
+
+              </thead>
+              <tbody id="tablaCS"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="tarjetas" class="section">
+  <div class="container">
+    <div class="block">
+      <h3>Historial de Tarjetas</h3>
+      <div class="tarjetas-list" id="tarjetasList"></div>
+    </div>
+  </div>
+</section>
+
+
+  <footer>HPC | By KZzr</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    /* ====== DATA ====== */
+
+    const TARJETAS_CONFIG = {
+  am: "https://cdn-icons-png.flaticon.com/512/8676/8676804.png",
+  ro: "https://cdn-icons-png.flaticon.com/512/5174/5174171.png"
+};
+
+    // === Liga BetPlay DIMAYOR 2025 ===
+const LOGOS = {
+  NAL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Atl%C3%A9tico_Nacional.png/250px-Atl%C3%A9tico_Nacional.png",
+  MIL: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Escudo_de_Millonarios_F%C3%BAtbol_Club.svg/1024px-Escudo_de_Millonarios_F%C3%BAtbol_Club.svg.png",
+  AME: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Escudo_del_Am%C3%A9rica_de_Cali.svg/1022px-Escudo_del_Am%C3%A9rica_de_Cali.svg.png",
+  JUN: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Escudo_de_Atl%C3%A9tico_Junior.svg/1793px-Escudo_de_Atl%C3%A9tico_Junior.svg.png",
+  CAL: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Escudo_Deportivo_Cali.png",
+  SFE: "https://upload.wikimedia.org/wikipedia/commons/5/58/Escudo_de_Independiente_Santa_Fe.png",
+  TOL: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Escudo_del_Deportes_Tolima.svg",
+  ONC: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQotTVARlP6T50EZYq6SYhgyuDlM9vwcBqiQ&s",
+  PEO: "https://upload.wikimedia.org/wikipedia/commons/d/db/Corpereira2019.png",
+  PAS: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Deportivo_Pasto_logo.png",
+  EQU: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/La_Equidad_Seguros_logo.svg/1091px-La_Equidad_Seguros_logo.svg.png",
+  ENV: "https://upload.wikimedia.org/wikipedia/en/4/4e/Envigado_FC_logo_2018.png",
+  BUC: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Atl%C3%A9ticoBucaramanga.png",
+  AGU: "https://dimayor.com.co/wp-content/uploads/2024/06/AGUILAS-DORADAS.png",
+  FPC: "https://fortalezaceif.com.co/wp-content/uploads/2024/05/Emblema-oficial-Home.png",
+  UNI: "https://upload.wikimedia.org/wikipedia/commons/2/27/Escudo_del_Uni%C3%B3n_Magdalena_F%C3%BAtbol_Club.png",
+  CUC: "https://upload.wikimedia.org/wikipedia/commons/7/73/C%C3%BAcuta_Deportivo_Centenario_2024.png",
+  HUI: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Escudo_de_Atl%C3%A9tico_Huila.svg/2009px-Escudo_de_Atl%C3%A9tico_Huila.svg.png",
+  BOY: "https://upload.wikimedia.org/wikipedia/en/0/04/Boyac%C3%A1_Chic%C3%B3_FC.png",
+  PET: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/EscudoAlianzaPetrolera.png/250px-EscudoAlianzaPetrolera.png"
+};
+
+const D1 = [
+  { nombre: "Atlético Nacional", tag: "#ATN", logo: LOGOS.NAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Millonarios", tag: "#MIL", logo: LOGOS.MIL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "América de Cali", tag: "#AME", logo: LOGOS.AME, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Junior FC", tag: "#JUN", logo: LOGOS.JUN, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Deportivo Cali", tag: "#CAL", logo: LOGOS.CAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Independiente Santa Fe", tag: "#SFE", logo: LOGOS.SFE, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Deportes Tolima", tag: "#TOL", logo: LOGOS.TOL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Once Caldas", tag: "#ONC", logo: LOGOS.ONC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Deportivo Pereira", tag: "#PEO", logo: LOGOS.PEO, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Deportivo Pasto", tag: "#PAS", logo: LOGOS.PAS, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "La Equidad", tag: "#EQU", logo: LOGOS.EQU, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Envigado FC", tag: "#ENV", logo: LOGOS.ENV, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Atlético Bucaramanga", tag: "#BUC", logo: LOGOS.BUC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Águilas Doradas", tag: "#AGU", logo: LOGOS.AGU, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Fortaleza CEIF", tag: "#FPC", logo: LOGOS.FPC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Unión Magdalena", tag: "#MAG", logo: LOGOS.UNI, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Cúcuta Deportivo", tag: "#CUC", logo: LOGOS.CUC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Atlético Huila", tag: "#HUI", logo: LOGOS.HUI, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Patriotas Boyacá", tag: "#BOY", logo: LOGOS.BOY, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
+  { nombre: "Alianza Petrolera", tag: "#PET", logo: LOGOS.PET, pj: 0, g: 0, e: 0, p: 0, pts: 0 }
+];
+
+const D2 = [
+  { nombre: "Por definir", tag: "#???", logo: LOGOS.NAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 }
+];
+
+const JORNADAS_D1 = [
+  { local: "NAL", logoLocal: LOGOS.NAL, visitante: "MIL", logoVisit: LOGOS.MIL, fecha: "00/00/0000", hora: "00:00", resultado: "0-0" },
+  { local: "AME", logoLocal: LOGOS.AME, visitante: "CAL", logoVisit: LOGOS.CAL, fecha: "00/00/0000", hora: "00:00", resultado: "0-0" },
+  { local: "TOL", logoLocal: LOGOS.TOL, visitante: "JUN", logoVisit: LOGOS.JUN, fecha: "00/00/0000", hora: "00:00", resultado: "0-0" },
+];
+
+const JORNADAS_D2 = [
+  { local: "SFE", logoLocal: LOGOS.SFE, visitante: "EQU", logoVisit: LOGOS.EQU, fecha: "00/00/0000", hora: "00:00", resultado: "0-0" },
+];
+
+const AFILIADOS = [
+  // { name:"BetPlay", url:"https://www.betplay.com.co", img:"https://upload.wikimedia.org/wikipedia/commons/7/74/BetPlay_logo.svg" },
+];
+
+const GOLEADORES = [
+  { jugador: "???", equipo: "Atlético Nacional", logo: LOGOS.NAL, valor: 0 },
+  { jugador: "???", equipo: "Millonarios", logo: LOGOS.MIL, valor: 0 },
+  { jugador: "???", equipo: "América de Cali", logo: LOGOS.AME, valor: 0 },
+  { jugador: "???", equipo: "Junior", logo: LOGOS.JUN, valor: 0 },
+  { jugador: "???", equipo: "Santa Fe", logo: LOGOS.SFE, valor: 0 },
+];
+
+const ASISTENCIAS = [
+  { jugador: "???", equipo: "Deportivo Cali", logo: LOGOS.CAL, valor: 0 },
+  { jugador: "???", equipo: "Once Caldas", logo: LOGOS.ONC, valor: 0 },
+  { jugador: "???", equipo: "Tolima", logo: LOGOS.TOL, valor: 0 },
+  { jugador: "???", equipo: "La Equidad", logo: LOGOS.EQU, valor: 0 },
+  { jugador: "???", equipo: "Bucaramanga", logo: LOGOS.BUC, valor: 0 },
+];
+
+const CS = [
+  { jugador: "???", equipo: "Águilas Doradas", logo: LOGOS.AGU, valor: 0 },
+  { jugador: "???", equipo: "Fortaleza CEIF", logo: LOGOS.FPC, valor: 0 },
+  { jugador: "???", equipo: "Envigado", logo: LOGOS.ENV, valor: 0 },
+  { jugador: "???", equipo: "Unión Magdalena", logo: LOGOS.UNI, valor: 0 },
+  { jugador: "???", equipo: "Cúcuta Deportivo", logo: LOGOS.CUC, valor: 0 },
+];
+
+const TARJETAS = [
+  { jugador: "???", club: "NAL", fecha: "00/00/0000", tipo: "am" },
+  { jugador: "???", club: "AME", fecha: "00/00/0000", tipo: "ro" },
+  { jugador: "???", club: "MIL", fecha: "00/00/0000", tipo: "am" },
+  { jugador: "???", club: "JUN", fecha: "00/00/0000", tipo: "am" },
+  { jugador: "???", club: "CAL", fecha: "00/00/0000", tipo: "am" },
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ====== TARJETAS ====== */
+function renderTarjetas() {
+  const container = document.getElementById("tarjetasList");
+  if (!container) return;
+  container.innerHTML = "";
+
+  TARJETAS.forEach(t => {
+    const div = document.createElement("div");
+    div.className = "tarjeta";
+    div.innerHTML = `
+      <img class="tarjeta-img" src="${TARJETAS_CONFIG[t.tipo]}" alt="Tarjeta ${t.tipo}">
+      <div class="jugador-info">
+        <div class="jugador-nombre">${t.jugador}</div>
+        <div class="club-info">
+          <img class="club-logo" src="${LOGOS[t.club]}" alt="${t.club}">
+        </div>
+        <div class="fecha">${t.fecha}</div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+
+/* ====== STATS ====== */
+function renderStats(targetId, data){
+  const tbody = document.getElementById(targetId);
+  if(!tbody) return;
+  tbody.innerHTML = "";
+  data.slice(0,5).forEach((p,i)=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${i+1}</td>
+      <td class="player-cell">
+        <img class="logo" src="${p.logo}" alt="">
+        <span class="jugador">${p.jugador}</span>
+      </td>
+      <td><b>${p.valor}</b></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Wrappers específicos
+function renderTopGoleadores(){ renderStats("tablaGoleadores", GOLEADORES); }
+function renderTopAsistencias(){ renderStats("tablaAsistencias", ASISTENCIAS); }
+function renderTopCS(){ renderStats("tablaCS", CS); }
+
+/* ====== FUNCIONES AUXILIARES ====== */
+function fechaLocal(fechaString){
+  if(fechaString === "00/00/0000") {
+    const hoy = new Date();
+    const region = navigator.language || "es-ES";
+    return new Intl.DateTimeFormat(region, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    }).format(hoy);
+  }
+  return fechaString;
+}
+
+/* ====== TABLA DE POSICIONES ====== */
+function sortTabla(a,b){
+  return (b.pts - a.pts) || (b.g - a.g) || (a.pj - b.pj) || a.nombre.localeCompare(b.nombre);
+}
+
+function renderTabla(data, targetId){
+  const tbody = document.getElementById(targetId);
+  if(!tbody) return;
+  tbody.innerHTML = "";
+  const sorted = Array.isArray(data) ? [...data].sort(sortTabla) : [];
+  sorted.forEach((t, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${i+1}</td>
+      <td class="left"><img class="logo" src="${t.logo}" alt="${t.nombre}"> ${t.nombre}</td>
+      <td>${t.tag}</td>
+      <td>${t.pj}</td>
+      <td>${t.g}</td>
+      <td>${t.e}</td>
+      <td>${t.p}</td>
+      <td><b>${t.pts}</b></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+/* ====== JORNADAS ====== */
+function renderJornadas(list, targetId){
+  const box = document.getElementById(targetId);
+  if(!box) return;
+  box.innerHTML = "";
+  list.forEach(m=>{
+    const row = document.createElement('div');
+    row.className = "match";
+    const resultHTML = (m.resultado && m.resultado !== "-") ? `<span class="score">${m.resultado}</span>` : 'VS';
+    row.innerHTML = `
+      <div class="team">
+        <img src="${m.logoLocal}" alt="${m.local}">
+        <span>${m.local}</span>
+      </div>
+      <div class="vs">${resultHTML}</div>
+      <div class="team" style="justify-content:flex-end">
+        <span style="text-align:right">${m.visitante}</span>
+        <img src="${m.logoVisit}" alt="${m.visitante}">
+      </div>
+      <div class="when">
+        <div>${fechaLocal(m.fecha)}</div>
+        <div>${m.hora}</div>
+      </div>
+    `;
+    box.appendChild(row);
+  });
+}
+
+/* ====== AFILIADOS ====== */
+function renderAfiliados(){
+  const grid = document.getElementById('affGrid');
+  if(!grid) return;
+  grid.innerHTML = "";
+  AFILIADOS.forEach(a=>{
+    const card = document.createElement('a');
+    card.className = 'aff';
+    card.href = a.url;
+    card.target = "_blank";
+    card.rel = "noopener";
+    card.innerHTML = `<img src="${a.img}" alt="${a.name}">`;
+    grid.appendChild(card);
+  });
+}
+
+/* ====== NAV ====== */
+function cambiarSeccion(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  const el = document.getElementById(id);
+  if(el) el.classList.add('active');
+
+  // nav active
+  document.querySelectorAll('.nav button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.target === id);
+  });
+
+  // scroll top
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+/* ====== INIT ====== */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const nav = document.getElementById('nav');
+  if(nav){
+    nav.addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[data-target]');
+      if(!btn) return;
+      cambiarSeccion(btn.dataset.target);
+    });
+  }
+
+  // Render inicial
+  renderTabla(D1, 'tablaD1');
+  renderJornadas(JORNADAS_D1, 'jornadasD1');
+  renderJornadas(JORNADAS_D2, 'jornadasD2');
+  renderAfiliados();
+  renderTopGoleadores();
+  renderTopAsistencias();
+  renderTopCS();
+  renderTarjetas();
+});
+</script>
+</body>
+</html>
