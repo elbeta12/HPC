@@ -479,7 +479,7 @@ const LOGOS = {
   EQU: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/La_Equidad_Seguros_logo.svg/1091px-La_Equidad_Seguros_logo.svg.png",
   ENV: "https://upload.wikimedia.org/wikipedia/en/4/4e/Envigado_FC_logo_2018.png",
   BUC: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Atl%C3%A9ticoBucaramanga.png",
-  AGU: "https://e7.pngegg.com/pngimages/249/396/png-clipart-rionegro-aguilas-categoria-primera-a-aguilas-doradas-itagui-football-sport-logo-thumbnail.png",
+  AGU: "logos/ag.png",
   FPC: "https://i.pinimg.com/736x/e9/db/fa/e9dbfa1f3fc3040e6dd71803b81bc010.jpg",
   UNI: "https://upload.wikimedia.org/wikipedia/commons/2/27/Escudo_del_Uni%C3%B3n_Magdalena_F%C3%BAtbol_Club.png",
   CUC: "https://upload.wikimedia.org/wikipedia/commons/7/73/C%C3%BAcuta_Deportivo_Centenario_2024.png",
@@ -501,6 +501,7 @@ const D1 = [
   { nombre: "Independiente Santa Fe", tag: "#SFE", logo: LOGOS.SFE, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
   { nombre: "Once Caldas", tag: "#ONC", logo: LOGOS.ONC, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
   { nombre: "Deportivo Pasto", tag: "#PAS", logo: LOGOS.PAS, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Águilas Doradas", tag: "#AGU", logo: LOGOS.AGU, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
 
 
  
@@ -509,7 +510,6 @@ const D1 = [
 const D2 = [
   { nombre: "Envigado FC", tag: "#ENV", logo: LOGOS.ENV, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
   { nombre: "Atlético Bucaramanga", tag: "#BUC", logo: LOGOS.BUC, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
-  { nombre: "Águilas Doradas", tag: "#AGU", logo: LOGOS.AGU, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
   { nombre: "Unión Magdalena", tag: "#MAG", logo: LOGOS.UNI, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
   { nombre: "Alianza Petrolera", tag: "#PET", logo: LOGOS.PET, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
   { nombre: "Deportivo Medellín", tag: "#MED", logo: LOGOS.MED, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
@@ -743,6 +743,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   // Render inicial
   renderTabla(D1, 'tablaD1');
+  renderTabla(D2, 'tablaD2');
   renderJornadas(JORNADAS_D1, 'jornadasD1');
   renderJornadas(JORNADAS_D2, 'jornadasD2');
   renderAfiliados();
