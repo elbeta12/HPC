@@ -303,12 +303,13 @@ footer{margin:40px 0 60px;text-align:center;color:#86aaa7;font-size:.9rem}
   </section>
 
   <!-- SECCIÓN: TABLAS -->
- <section id="tablas" class="section">
+<section id="tablas" class="section">
   <div class="container">
+
     <div class="tables-grid">
       <div>
         <div class="block">
-          <h3>Primera División</h3>
+          <h3>Grupo A</h3>
           <table>
             <thead>
               <tr>
@@ -324,7 +325,37 @@ footer{margin:40px 0 60px;text-align:center;color:#86aaa7;font-size:.9rem}
             </thead>
             <tbody id="tablaD1"></tbody>
           </table>
-          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="tables-grid" style="margin-top:25px">
+      <div>
+        <div class="block">
+          <h3>Grupo B</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Equipo</th>
+                <th>Tag</th>
+                <th>PJ</th>
+                <th>G</th>
+                <th>E</th>
+                <th>P</th>
+                <th>Pts</th>
+              </tr>
+            </thead>
+            <tbody id="tablaD2"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
 
   <!-- SECCIÓN: JORNADAS -->
@@ -443,46 +474,48 @@ const LOGOS = {
   CAL: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Escudo_Deportivo_Cali.png",
   SFE: "https://upload.wikimedia.org/wikipedia/commons/5/58/Escudo_de_Independiente_Santa_Fe.png",
   TOL: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Escudo_del_Deportes_Tolima.svg",
-  ONC: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQotTVARlP6T50EZYq6SYhgyuDlM9vwcBqiQ&s",
-  PEO: "https://upload.wikimedia.org/wikipedia/commons/d/db/Corpereira2019.png",
+  ONC: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Logo_Once_Caldas.png/250px-Logo_Once_Caldas.png",
   PAS: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Deportivo_Pasto_logo.png",
   EQU: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/La_Equidad_Seguros_logo.svg/1091px-La_Equidad_Seguros_logo.svg.png",
   ENV: "https://upload.wikimedia.org/wikipedia/en/4/4e/Envigado_FC_logo_2018.png",
   BUC: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Atl%C3%A9ticoBucaramanga.png",
-  AGU: "https://dimayor.com.co/wp-content/uploads/2024/06/AGUILAS-DORADAS.png",
-  FPC: "https://fortalezaceif.com.co/wp-content/uploads/2024/05/Emblema-oficial-Home.png",
+  AGU: "https://e7.pngegg.com/pngimages/249/396/png-clipart-rionegro-aguilas-categoria-primera-a-aguilas-doradas-itagui-football-sport-logo-thumbnail.png",
+  FPC: "https://i.pinimg.com/736x/e9/db/fa/e9dbfa1f3fc3040e6dd71803b81bc010.jpg",
   UNI: "https://upload.wikimedia.org/wikipedia/commons/2/27/Escudo_del_Uni%C3%B3n_Magdalena_F%C3%BAtbol_Club.png",
   CUC: "https://upload.wikimedia.org/wikipedia/commons/7/73/C%C3%BAcuta_Deportivo_Centenario_2024.png",
   HUI: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Escudo_de_Atl%C3%A9tico_Huila.svg/2009px-Escudo_de_Atl%C3%A9tico_Huila.svg.png",
   BOY: "https://upload.wikimedia.org/wikipedia/en/0/04/Boyac%C3%A1_Chic%C3%B3_FC.png",
-  PET: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/EscudoAlianzaPetrolera.png/250px-EscudoAlianzaPetrolera.png"
+  PET: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/EscudoAlianzaPetrolera.png/250px-EscudoAlianzaPetrolera.png",
+  MED: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Escudo_del_Deportivo_Independiente_Medell%C3%ADn.png/250px-Escudo_del_Deportivo_Independiente_Medell%C3%ADn.png",
+  PER: "https://upload.wikimedia.org/wikipedia/commons/d/db/Corpereira2019.png",
+  LLA: "https://i.pinimg.com/736x/34/6d/d9/346dd9889745ad50bc33e3a7bcf982c6.jpg"
+
 };
 
 const D1 = [
-  { nombre: "Atlético Nacional", tag: "#ATN", logo: LOGOS.NAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Millonarios", tag: "#MIL", logo: LOGOS.MIL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "América de Cali", tag: "#AME", logo: LOGOS.AME, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Junior FC", tag: "#JUN", logo: LOGOS.JUN, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Deportivo Cali", tag: "#CAL", logo: LOGOS.CAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Independiente Santa Fe", tag: "#SFE", logo: LOGOS.SFE, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Deportes Tolima", tag: "#TOL", logo: LOGOS.TOL, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Once Caldas", tag: "#ONC", logo: LOGOS.ONC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Deportivo Pereira", tag: "#PEO", logo: LOGOS.PEO, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Deportivo Pasto", tag: "#PAS", logo: LOGOS.PAS, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "La Equidad", tag: "#EQU", logo: LOGOS.EQU, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Envigado FC", tag: "#ENV", logo: LOGOS.ENV, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Atlético Bucaramanga", tag: "#BUC", logo: LOGOS.BUC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Águilas Doradas", tag: "#AGU", logo: LOGOS.AGU, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Fortaleza CEIF", tag: "#FPC", logo: LOGOS.FPC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Unión Magdalena", tag: "#MAG", logo: LOGOS.UNI, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Cúcuta Deportivo", tag: "#CUC", logo: LOGOS.CUC, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Atlético Huila", tag: "#HUI", logo: LOGOS.HUI, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Patriotas Boyacá", tag: "#BOY", logo: LOGOS.BOY, pj: 0, g: 0, e: 0, p: 0, pts: 0 },
-  { nombre: "Alianza Petrolera", tag: "#PET", logo: LOGOS.PET, pj: 0, g: 0, e: 0, p: 0, pts: 0 }
+  { nombre: "Atlético Nacional", tag: "#ATN", logo: LOGOS.NAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Millonarios", tag: "#MIL", logo: LOGOS.MIL, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "América de Cali", tag: "#AME", logo: LOGOS.AME, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Junior FC", tag: "#JUN", logo: LOGOS.JUN, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Deportivo Cali", tag: "#CAL", logo: LOGOS.CAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Independiente Santa Fe", tag: "#SFE", logo: LOGOS.SFE, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Once Caldas", tag: "#ONC", logo: LOGOS.ONC, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Deportivo Pasto", tag: "#PAS", logo: LOGOS.PAS, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+
+
+ 
 ];
 
 const D2 = [
-  { nombre: "Por definir", tag: "#???", logo: LOGOS.NAL, pj: 0, g: 0, e: 0, p: 0, pts: 0 }
+  { nombre: "Envigado FC", tag: "#ENV", logo: LOGOS.ENV, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Atlético Bucaramanga", tag: "#BUC", logo: LOGOS.BUC, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Águilas Doradas", tag: "#AGU", logo: LOGOS.AGU, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Unión Magdalena", tag: "#MAG", logo: LOGOS.UNI, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Alianza Petrolera", tag: "#PET", logo: LOGOS.PET, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Deportivo Medellín", tag: "#MED", logo: LOGOS.MED, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Pereira", tag: "#PER", logo: LOGOS.PER, pj: 0, g: 0, e: 0, p: 0, pts: 0 }, 
+  { nombre: "Llanero F.C", tag: "#LLA", logo: LOGOS.LLA, pj: 0, g: 0, e: 0, p: 0, pts: 0 } 
+
 ];
 
 const JORNADAS_D1 = [
